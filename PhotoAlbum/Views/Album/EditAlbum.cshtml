@@ -1,0 +1,82 @@
+﻿@model PhotoAlbum.Models.PageData<PhotoAlbum.Business.DTO.PhotoOfAlbumDTO>
+
+@{
+    ViewBag.Title = ViewBag.AlbumName;
+}
+
+<style>
+    img {
+        max-width:160px;
+        max-height:140px;
+        float: none;
+        margin: 0 0 5px 0;
+    }
+
+    .fig {
+        padding:0;
+        text-align: center;
+        font-style: italic;
+        margin:5px;
+        color:  white;
+   }
+</style>
+
+<h2>
+    @ViewBag.AlbumName
+</h2>
+ <hr />
+
+<div id="propertis" style="padding:14px;">
+    <div >
+        <fieldset>
+            <legend>Загрузка новых фотографий:</legend>
+            <form action="/photo/upload?albumName=@ViewBag.AlbumName" enctype="multipart/form-data" method="post">
+               <p> <input accept="image/*" id="Files" multiple="multiple" name="Files" type="file" /></p>
+               <p> <input id="btnUpload" type="submit" value="Отправить" /> </p>
+            </form>
+            </fieldset>
+    </div>
+    <br/>
+    <div >
+        
+        <fieldset title="Задать новое имя альбома">
+            <legend>Переименовать альбом:</legend>
+            @using (Html.BeginForm("RenameAlbum", "Album", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
+            {
+                <p>Введите новое имя альбома:</p>
+                <p>@Html.TextBox("newAlbumName", "")</p>
+                <p><input type="submit" value="Переименовать" /></p>
+            }
+        </fieldset>
+    </div>
+</div>
+
+<hr />
+<h2>
+    Photo Gallery
+</h2>
+
+<div id="gallery">
+    <ul style="text-align:center;">
+        @foreach (var item in Model.Content)
+        {
+            <li style="display:inline-block;">
+                    <figure class="fig">
+                        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.Image) + "\" />")
+                        <figcaption>
+                            <a href="@Url.Action("EditPhoto", "Photo", new { albumName = ViewBag.AlbumName, idPhoto = item.Id})">Редактировать</a> |
+                            <a href="@Url.Action("Delete", "Photo", new { albumName = ViewBag.AlbumName, idPhoto = item.Id})">Удалить</a>
+                        </figcaption>
+                    </figure>
+            </li>
+        }
+    </ul>
+
+    <div>
+        @if (Model.CountPage > 1)
+        {
+            @Html.PageLinks(Model.NumberPage, Model.CountPage, x => Url.Action("EditAlbum", "Album", new { albumName = ViewBag.AlbumName, page = x }))
+        }
+    </div>
+</div>

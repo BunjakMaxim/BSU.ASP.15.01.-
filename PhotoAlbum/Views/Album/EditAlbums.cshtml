@@ -1,0 +1,59 @@
+﻿@model PhotoAlbum.Models.PageData<string>
+
+@{
+    ViewBag.Title = "Альбомы";
+}
+<style>
+    a.knopka {
+        color: white;
+        text-decoration: none;
+        user-select: none;
+        background-color: #82974B;
+        padding: .7em 1.5em;
+        outline: none;
+    }
+    
+    a.knopka:hover {
+        background-color: orangered;
+    }
+    
+    a.knopka:active {
+        background-color: red;
+    }
+
+    .fig {
+        display: block;
+        text-align: center;
+        font-style: italic;
+        color:  white;
+   }
+</style>
+
+<div style="display: block; padding: 1.5%;">
+    <a href="/Album/Create" class="knopka">Создать новый альбом</a>
+</div>
+
+<div id="gallery">
+    <ul>
+        @foreach (var albumName in Model.Content)
+        {
+            <li style="display:inline-block;">
+                    <figure class="fig">
+                        <img src="~/Content/81c2eda06d21.jpg" title="Открыть @albumName" width="132" height="120">
+                        <figcaption>
+                            @albumName
+                        </figcaption>
+                        <a href="@Url.Action("EditAlbum", "Album", new { albumName = @albumName })">Изменить</a> |
+                        <a href="@Url.Action("Delete", "Album", new { albumName = @albumName })">Удалить</a>
+                    </figure>
+            </li>
+        }
+    </ul>
+
+    <div>
+        @if (Model.CountPage > 1)
+        {
+            @Html.PageLinks(Model.NumberPage, Model.CountPage, x => Url.Action("EditAlbums", "Album", new { page = x }))
+        }
+    </div>
+</div>

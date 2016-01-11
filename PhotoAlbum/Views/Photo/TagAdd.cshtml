@@ -1,0 +1,11 @@
+﻿@model IEnumerable<string>
+
+<div>
+    <h3>Все тиги фотографии:</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>

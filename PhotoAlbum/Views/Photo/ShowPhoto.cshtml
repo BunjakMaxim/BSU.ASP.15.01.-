@@ -1,0 +1,68 @@
+﻿@model PhotoAlbum.Business.DTO.PhotoPropertiesDTO
+
+@{
+    ViewBag.Title = "ShowPhoto";
+}
+
+<style>
+    img{
+        max-width:600px;
+        max-height:500px;
+        display:block; 
+        margin:0 auto;
+    }
+
+    button {
+        background-color: orange;
+        border: 1px solid #7a7b7e; /* Параметры рамки */
+        width: 28px; /* Ширина кнопки */
+        height: 28px; /* Высота */
+        border-radius: 30px;
+   }
+
+    .selected{
+        background-color: red;
+    }
+
+    .badge {
+        display: inline-block;
+        min-width: 10px;
+        padding: 3px 7px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        background-color: #E39821;
+        border-radius: 10px;
+    }
+</style>
+
+<h2>ShowPhoto</h2>
+
+<div>
+    <hr />
+    @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+    <div id="propertis" style="padding:14px;">
+        <div style="float:left;">
+            Рейтинг: @Model.Rating
+
+            @if (!Model.IsMy)
+            {
+                using (Html.BeginForm("SetRating", "Photo", new { idPhoto = @Model.Id }, FormMethod.Post))
+                {
+                    @Html.ButtonsRatingSelected(Model.MyRating);
+                }
+            }
+        </div>
+        <div style="float:right;">
+            @foreach (var tagName in Model.TagName)
+            {
+                <a href="@Url.Action("ShowPhotoByTag", "Photo", new { tagName = @tagName })" class="badge">@tagName</a>
+            }
+        </div>
+    </div>
+</div>

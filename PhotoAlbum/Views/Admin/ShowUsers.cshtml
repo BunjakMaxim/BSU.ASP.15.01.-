@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PhotoAlbum.Business.DTO.UserDTO>
+
+@{
+    ViewBag.Title = "ShowUsers";
+}
+
+<h2>Все пользователи</h2>
+
+<table border="1">
+    <tr bgcolor="Orange" align="center">
+        <th>Логин</th>
+        <th>Email</th>
+        <th>Дата регистрации</th>
+        <th>Заблокирован</th>
+        <th>Роль</th>
+        <th>Удаление</th>
+    </tr>
+
+    @foreach(var user in Model)
+    {
+        <tr>
+            <td>@user.Login</td>
+            <td>@user.Email</td>
+            <td>@user.CreationDate</td>
+            <td>@user.IsBlocked</td>
+            <td>@user.Role</td>
+            <td><a href="@Url.Action("DeleteUser", "Admin", new { userLogin = user.Login})" class="knopka">Удалить</a></td>
+        </tr>
+    }
+
+</table>

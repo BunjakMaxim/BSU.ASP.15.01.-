@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Настройка аккаунта";
+}
+
+<h2 style="text-align:center;">Настройка аккаунта</h2>
+
+&nbsp;&nbsp;
+
+<h4>Изменить Ваш логин</h4>
+<fieldset>
+    @using (Html.BeginForm("RenameUser", "Account", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
+    {
+        <p>Введите новый логин: @Html.TextBox("newLogin", "")</p>
+        <p><input type="submit" value="Изменить" /></p>
+    }
+</fieldset>
+
+
+
+&nbsp;&nbsp;
+
+<h4>Изменить Ваш адрес электронной почты</h4>
+<hr/>
+<fieldset title="Задать новый email">
+    @using (Html.BeginForm("RenameAlbum", "Album", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
+    {
+        <p>Введите новый email: @Html.TextBox("newAlbumName", "")</p>
+        <p><input type="submit" value="Изменить" /></p>
+    }
+</fieldset>
+
+
+
+&nbsp;&nbsp;
+
+<h4>Изменить пароль</h4>
+<hr/>
+<fieldset>
+    @using (Html.BeginForm("RenameAlbum", "Album", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
+    {
+        <p>Введите пароль:
+        @Html.TextBox("newAlbumName", "")</p>
+        <p>Введите новый пароль:
+        @Html.TextBox("newAlbumName", "")</p>
+        <input type="submit" value="Изменить" />
+    }
+</fieldset>

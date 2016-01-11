@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="logo">
+        <h1>photoAlbum</h1>
+        <div id="login">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div id="menu">
+        <ul>
+            @Html.MenuShowSelected((string)@ViewBag.Title, @User.Identity.Name == "Admin")
+        </ul>
+    </div>
+    <div id="site_content">
+        @RenderBody()
+        <br />
+    </div>
+    <div class="footer">
+
+    </div>
+</body>
+
+</html>

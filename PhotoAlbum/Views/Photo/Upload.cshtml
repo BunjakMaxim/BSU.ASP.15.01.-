@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Загрузка фотографий";
+}
+
+<h2>Загрузка фотографий</h2>
+
+<form action="/photo/upload" enctype="multipart/form-data" method="post">
+    <label>Загрузка картинок:</label>
+    <input accept="image/*" id="File1" multiple="multiple" name="File1" type="file" />
+    <input id="btnUpload" type="submit" value="Отправить" />
+</form>

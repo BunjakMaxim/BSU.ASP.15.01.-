@@ -1,0 +1,213 @@
+﻿    html {
+        height: 100%;
+    }
+
+    body {
+        font-family: verdana, arial, sans-serif;
+        padding: 0px;
+        margin: 0px;
+        font-size: .68em;
+    }
+
+    p {
+        margin: 0px;
+        padding: 0px 0px 16px 0px;
+        line-height: 1.7em;
+    }
+
+    h1 {
+        font-family: arial, sans-serif;
+        letter-spacing: .1em;
+        font-weight: normal;
+        text-transform: uppercase;
+        padding: 16px 0px 5px 0px;
+        margin: 0px 0px 12px 0px;
+        border-bottom: 1px solid;
+        font-size: 150%;
+    }
+
+    .sub {
+        font-size: 55%;
+        padding-left: 12px;
+        letter-spacing: .1em;
+    }
+
+    a {
+        outline: none;
+    }
+
+/* unordered list */
+    ul {
+       /* margin: 0 0 18px 18px;*/
+        padding: 0;
+    }
+
+    ul li {
+        list-style-type: square;
+        margin: 0 0 6px 0;
+        padding: 0;
+    }
+
+/* ordered list */
+    ol {
+        margin: 6px 0 0 24px;
+        padding: 0;
+    }
+
+    ol li {
+        margin: 0 0 12px 0;
+        padding: 0;
+    }
+
+/* margin lefts / margin rights - to centre content */
+    #logo, #menu, #site_content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* logo */
+    #logo {
+        width: 65%;
+        height: 95px;
+        border-top: 5px solid;
+    }
+
+    #logo h1 {
+        font-family: century gothic, sans-serif;
+        font-size: 600%;
+        text-transform: lowercase;
+        font-weight: normal;
+        padding: 0px 0px 0px 14px;
+        border: 0px;
+        float: left;
+        letter-spacing: 0px;
+    }
+
+    #login {
+        margin: 15px 9px 0px 0px;
+        font-size: 80%;
+        text-align: right;
+        padding: 20px 10px 0px 0px;
+        text-transform: uppercase;
+    }
+
+/* navigation menu */
+    #menu {
+        height: 44px;
+        width: 65%;
+        border-bottom: 2px solid;
+    }
+
+    #menu ul {
+        margin: 0px auto
+    }
+
+     #menu li {
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+
+    #menu li a {
+        display: block;
+        float: left;
+        height: 38px;
+        text-decoration: none;
+        padding: 6px 19px 0px 19px;
+        border-right: 2px solid;
+        font-weight: bold;
+    }
+
+    #menu li a {
+        background: #40403E;
+        color: #929280;
+        border-color: #2C2C2A;
+    }   
+
+/* main content */
+    #site_content {
+        width: 65%;
+        overflow: hidden;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-left: 1px solid;
+    }
+
+    #logo, #logo h1 {
+        background: #2C2C2A;
+        color: #40403E;
+        border-color: #E39821;
+    }
+
+    #links, #links a:hover, #links a.selected, #links a.selected:hover, .sub {
+        background: transparent;
+        color: #929280;
+    }
+
+    #links a {
+        background: transparent;
+        color: #E39821;
+    }
+
+    #menu {
+        background: #40403E;
+        color: #EEE;
+        border-color: #E39821;
+    }
+
+    #menu li a:hover, #menu li a.selected, #menu li a.selected:hover {
+        background: #E39821;
+        color: #40403E;
+        border-color: #2C2C2A;
+    }
+
+    #contact input, #contact textarea, #contact input.submit {
+        background: #2C2C2A;
+        color: #929280;
+        border-color: #40403E;
+    }
+
+    body {
+        background: #2C2C2A;
+        color: #929280;
+    }
+
+    #links, #links a:hover, #links a.selected, #links a.selected:hover, .sub {
+        background: transparent;
+        color: #E39821;
+    }
+
+    #links a {
+        background: transparent;
+        color: #82974B;
+    }
+
+    #contact input, #contact textarea, #contact input.submit {
+        background: #2C2C2A;
+        color: #929280;
+        border-color: #40403E;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    ul.navigate {
+        margin: 0; /* Обнуляем значение отступов */
+        padding: 4px; /* Значение полей */
+   }
+   ul.navigate li {
+        display: inline; /* Отображать как строчный элемент */
+        margin-right: 5px; /* Отступ слева */
+        border: 1px solid #929280; 
+        padding: 3px; /* Поля вокруг текста */
+   }
+  
+   div.footer{
+       background: #40403E;
+       color: #929280;
+       height: 30px;
+       width: 65%;
+       margin: 0 auto;
+   }
