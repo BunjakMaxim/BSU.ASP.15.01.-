@@ -18,20 +18,6 @@ namespace PhotoAlbum
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                null,
-                url: "Error",
-                defaults: new { controller = "Error", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "LessonProject.Areas.Default.Controllers" }
-            );
-
-            routes.MapRoute(
-                null,
-                url: "NotFoundPage",
-                defaults: new { controller = "Error", action = "NotFoundPage", id = UrlParameter.Optional },
-                namespaces: new[] { "LessonProject.Areas.Default.Controllers" }
-            );
         }
     }
 }

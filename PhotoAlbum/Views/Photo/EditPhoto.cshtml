@@ -9,7 +9,7 @@
     @using (Ajax.BeginForm("TagAdd","Photo", new { idPhoto = @ViewBag.Id }, new AjaxOptions { UpdateTargetId = "results" }))
     {
         <input type="text" name="nameTag" />
-        <input type="submit" value="Поиск" />
+        <input type="submit" value="Добавить" />
     }
     <div id="results">
             <h3>Все тиги фотографии:</h3>
