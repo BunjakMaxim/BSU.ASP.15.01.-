@@ -1,54 +1,35 @@
 ﻿@model PhotoAlbum.Models.PageData<string>
 
 @{
-    ViewBag.Title = "Альбомы";
+    ViewBag.Title = "Albums";
 }
-<style>
-    a.knopka {
-        color: white;
-        text-decoration: none;
-        user-select: none;
-        background-color: orangered;
-        padding: .7em 1.5em;
-        outline: none;
-    }
 
-        a.knopka:hover {
-            background-color: orangered;
-        }
-
-        a.knopka:active {
-            background-color: red;
-        }
-
-    .fig {
-        display: block;
-        text-align: center;
-        font-style: italic;
-        color: white;
-    }
-</style>
-
-<div style="display: block; padding: 14px;">
-    <a href="/Album/EditAlbums" class="knopka">Редактировать</a>
-</div>
+@if (@ViewBag.UserName == User.Identity.Name)
+{
+    <div style="display: block; padding: 14px;">
+        <a href="/Album/EditAlbums" class="knopka">Edit albums</a>
+    </div>
+}
 
 <div id="gallery">
-    <ul>
-        @foreach (var albumName in Model.Content)
-        {
-            <li style="display:inline-block;">
-                <a href="@Url.Action("ShowPhotos", "Photo", new { albumName = @albumName })" style="text-decoration:none;">
-                    <figure class="fig">
-                        <img src="~/Content/81c2eda06d21.jpg" title="Открыть @albumName" width="132" height="120">
-                        <figcaption>
-                            @albumName
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-        }
-    </ul>
+   
+    <div style="text-align:center;">
+        <ul>
+            @foreach (var albumName in Model.Content)
+            {
+                <li style="display:inline-block;">
+                    <a href="@Url.Action("ShowPhotos", "Photo", new {userName = @ViewBag.UserName,  albumName = @albumName })" style="text-decoration:none;">
+                        <figure class="fig">
+                            <img src="~/Content/81c2eda06d21.jpg" title="Открыть @albumName" width="132" height="120">
+                            <figcaption>
+                                @albumName
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
 
     <div>
         @if (Model.CountPage > 1)

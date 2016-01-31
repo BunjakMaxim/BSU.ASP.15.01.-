@@ -13,25 +13,29 @@ namespace PhotoAlbum.Controllers
     [Authorize]
     public class AlbumController : Controller
     {
-        private readonly IContentService contentService;
-        
-        public AlbumController(IContentService content)
+        private readonly IAlbumService albumService;
+        private readonly IPhotoService photoService;
+
+        public AlbumController(IAlbumService albums, IPhotoService photos)
         {
-            contentService = content;
+            albumService = albums;
+            photoService = photos;
         }
 
-        public ActionResult ShowAlbums(int page = 1)
+        public ActionResult ShowAlbums(string userName, int page = 1)
         {
-            string login = User.Identity.Name;
-            var albums = new PageData<string>(contentService.GetAllUserAlbumsNams(login), page);
+            if(userName == null)
+                userName = User.Identity.Name;
 
+            ViewBag.UserName = userName;
+            var albums = new PageData<string>(albumService.GetAllUserAlbumsNams(userName), page);
             return View(albums);
         }
 
         public ActionResult EditAlbums(int page = 1)
         {
             string login = User.Identity.Name;
-            var album = new PageData<string>(contentService.GetAllUserAlbumsNams(login), page);
+            var album = new PageData<string>(albumService.GetAllUserAlbumsNams(login), page);
 
             return View(album);
         }
@@ -40,7 +44,7 @@ namespace PhotoAlbum.Controllers
         {
             ViewBag.AlbumName = albumName;
             string login = User.Identity.Name;
-            var photos = new PageData<PhotoOfAlbumDTO>(contentService.GetPhotosOfAlbum(login, albumName), page);
+            var photos = new PageData<PhotoOfAlbumDTO>(photoService.GetPhotosOfAlbum(login, albumName), page);
 
             return View(photos);
         }
@@ -55,11 +59,11 @@ namespace PhotoAlbum.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (contentService.CreateNewAlbum(User.Identity.Name, album.Name))
+                if (albumService.CreateNewAlbum(User.Identity.Name, album.Name))
                 {
                     return RedirectToAction("EditAlbums");
                 }
-                ModelState.AddModelError("", "Альбом с таким названием уже существует.");
+                ModelState.AddModelError("", "The album with the same name already exists.");
             }
             
             return View(album);
@@ -69,7 +73,7 @@ namespace PhotoAlbum.Controllers
         public ActionResult RenameAlbum(string albumName, string newAlbumName)
         {
             string login = User.Identity.Name;
-            contentService.UpdateAlbum(login, albumName, newAlbumName);
+            albumService.UpdateAlbum(login, albumName, newAlbumName);
 
             return RedirectToAction("EditAlbums");
         }
@@ -77,7 +81,7 @@ namespace PhotoAlbum.Controllers
         public ActionResult Delete(string albumName)
         {
             string login = User.Identity.Name;
-            contentService.DeleteAlbum(login, albumName);
+            albumService.DeleteAlbum(login, albumName);
 
             return RedirectToAction("EditAlbums");
         }

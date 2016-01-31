@@ -11,9 +11,9 @@ namespace PhotoAlbum.HtmlHelpers
     {
         static Dictionary<string, string> menu = new Dictionary<string, string>()
         {
-            {"Домой", "/Home/Index"},
-            {"Альбомы", "/Album/ShowAlbums"},
-            {"Управление польователями", "/Admin/ShowUsers"}
+            {"Home", "/Home/Index"},
+            {"Albums", "/Album/ShowAlbums"},
+            {"User management", "/Admin/ShowUsers"}
         };
 
         public static MvcHtmlString MenuShowSelected(this HtmlHelper html, string menuSelected, bool isAdmin)
@@ -22,7 +22,7 @@ namespace PhotoAlbum.HtmlHelpers
 
             foreach (var item in menu)
             {
-                if (!isAdmin && item.Key == "Управление польователями")
+                if (!isAdmin && item.Key == "User management")
                     continue;
 
                 TagBuilder li = new TagBuilder("li");

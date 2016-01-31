@@ -14,6 +14,7 @@ namespace PhotoAlbum.Business.Interfaces
         User GetUserByLogin(string login);
         bool UserExistsByLogin(string login);
         IEnumerable<UserDTO> GetAllUsers();
+        IEnumerable<string> GetAllUsersName();
         void DeleteUser(string login);
         bool ValidateUser(string login, string password);
         void ChangePassword(string login, string newPassword, string oldPassword);

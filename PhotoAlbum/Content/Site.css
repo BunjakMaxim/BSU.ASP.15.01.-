@@ -26,6 +26,10 @@
         font-size: 150%;
     }
 
+    h4{
+        text-align:center;
+    }
+
     .sub {
         font-size: 55%;
         padding-left: 12px;
@@ -36,6 +40,26 @@
         outline: none;
     }
 
+     .page {
+        position: relative;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .tags-bare {
+        width: 50%;
+        margin-right: -50%;
+        position: relative;
+        left: -50%;
+        float: left;
+    }
+
+    .users-bar {
+        width: 150%;
+        border-left: 1px solid;
+        float: left;
+        text-align: center;
+    }
 /* unordered list */
     ul {
        /* margin: 0 0 18px 18px;*/
@@ -211,3 +235,27 @@
        width: 65%;
        margin: 0 auto;
    }
+
+       a.knopka {
+        color: white;
+        text-decoration: none;
+        user-select: none;
+        background-color: orangered;
+        padding: .7em 1.5em;
+        outline: none;
+    }
+
+        a.knopka:hover {
+            background-color: orangered;
+        }
+
+        a.knopka:active {
+            background-color: red;
+        }
+
+    .fig {
+        display: block;
+        text-align: center;
+        font-style: italic;
+        color: white;
+    }

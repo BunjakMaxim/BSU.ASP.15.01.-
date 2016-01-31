@@ -3,14 +3,16 @@
 @{
     ViewBag.Title = "Добавленеие тегов";
 }
-<script src="@Url.Content("~/scripts/jquery-2.2.0.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
 <div>
-    @using (Ajax.BeginForm("TagAdd","Photo", new { idPhoto = @ViewBag.Id }, new AjaxOptions { UpdateTargetId = "results" }))
+    @using (Ajax.BeginForm("TagAdd","Photo", new { idPhoto = @ViewBag.Id }, new AjaxOptions { UpdateTargetId = "results", LoadingElementId = "loading"}))
     {
         <input type="text" name="nameTag" />
         <input type="submit" value="Добавить" />
     }
+    <div id="loading" style="display:none; text-align:center">
+        <img src="~/Content/loader_orange.gif" width="48px">
+    </div>
     <div id="results">
             <h3>Все тиги фотографии:</h3>
             <ul>

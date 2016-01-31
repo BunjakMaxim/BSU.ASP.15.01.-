@@ -1,0 +1,106 @@
+﻿@model PhotoAlbum.Models.PageData<PhotoAlbum.Business.DTO.PhotoPropertiesDTO>
+
+@{ 
+    int count = Model.Content.Count();
+}
+
+<div class="container changeimg">
+    @{
+        int i = 0, ind = 0;
+
+        int[] nex = new int[count];
+        foreach (var p in Model.Content)
+        {
+            nex[ind++] = p.Id;
+        }
+
+        ind = 1;
+
+        foreach (var photo in Model.Content)
+        {
+            <div id="img-@photo.Id">
+                <a href="#allPhotos" class="knopka" style="padding:3px; text-align:end;">X</a>
+                @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                    + Convert.ToBase64String(photo.Image) + "\" />")
+
+                <section class="color-3">
+                    <nav class="nav-circlepop">
+                        @if (i != 0)
+                        {
+                            <a class="prev" href="#img-@i">
+                                <span class="icon-wrap"></span>
+                            </a>
+                        }
+                        else if (@Model.NumberPage > 1)
+                        {
+                            <a class="prev" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#gallery" href=@Url.Action("GetPhotosOfAlbum", "Photo", new { albumName = @TempData["AlbumName"], page = (@Model.NumberPage - 1) })>
+                                <span class="icon-wrap"></span>
+                            </a>
+                        }
+
+                        @if (ind < count)
+                        {
+                            <a class="next" href="#img-@nex[ind++]">
+                                <span class="icon-wrap"></span>
+                            </a>
+                        }
+                        else if (@Model.NumberPage != Model.CountPage)
+                        {
+                            <a class="next" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#gallery" href=@Url.Action("GetPhotosOfAlbum", "Photo", new { albumName = @TempData["AlbumName"], page = (@Model.NumberPage + 1) })>
+                                <span class="icon-wrap"></span>
+                            </a>
+                        }
+                    </nav>
+                </section>
+
+
+                <div id="propertis" style="padding:14px; display:block;">
+                    <div style="float:left; display:block;">
+                        <div id="Rating-@photo.Id">
+                            Рейтинг: @photo.Rating
+
+                            @if (!photo.IsMy)
+                            {
+                                using (Ajax.BeginForm("EditRating", "Photo", new { idPhoto = @photo.Id }, new AjaxOptions { UpdateTargetId = ("Rating-" + @photo.Id), LoadingElementId = "loading" }))
+                                {
+                                    @Html.ButtonsRatingSelected(photo.MyRating);
+                                }
+
+                                <div id="loading" style="display:none; text-align:center">
+                                    <img src="~/Content/loader_orange.gif" width="20px">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div style="width:50%; float:right; display:block; line-height: 2.5;">
+                        Tags: 
+                        @foreach (var tagName in photo.TagName)
+                        {
+                            <a href="@Url.Action("ShowPhotoByTag", "Photo", new { tagName = @tagName })" class="badge">@tagName</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            i = photo.Id;
+        }
+    }
+
+    <div id="allPhotos">
+    @foreach (var item in Model.Content)
+            {
+        <a href="#img-@item.Id">
+            @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.Image) + "\" />")
+        </a>
+    }
+
+    <br />
+    <div>
+        @if (Model.CountPage > 1)
+            {
+            @Html.PageLinks(Model.NumberPage, Model.CountPage, x => Url.Action("ShowPhotos", "Photo", new { albumName = TempData["AlbumName"], page = x }))
+        }
+    </div>
+</div>
+</div>
+

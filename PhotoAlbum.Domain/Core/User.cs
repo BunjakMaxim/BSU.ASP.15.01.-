@@ -13,5 +13,6 @@ namespace PhotoAlbum.Domain.Core
 
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Album> Albums { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

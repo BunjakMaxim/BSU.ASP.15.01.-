@@ -9,25 +9,25 @@ namespace PhotoAlbum.Models
 
         public int Id { get; set; }
 
-        [Display(Name = "Введите Ваш логин")]
-        [Required(ErrorMessage = "Поле не может быть пустым!")]
+        [Display(Name = "Enter your login :")]
+        [Required]
         public string Login { get; set; }
 
-        [Display(Name = "Введите Ваш e-mail")]
-        [Required(ErrorMessage = "Поле не может быть пустым!")]
+        [Display(Name = "Enter your e-mail :")]
+        [Required]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
-        [StringLength(100, ErrorMessage = "Пароль должен содержать не менее {2} символов", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The password must contain at least {2} characters", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Введите Ваш пароль")]
+        [Display(Name = "Enter your password :")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Подтвердите пароль")]
+        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Подтвердите пароль")]
-        [Compare("Password", ErrorMessage = "Пароли должны совпадать")]
+        [Display(Name = "Подтвердите пароль :")]
+        [Compare("Password", ErrorMessage = "Passwords must match")]
         public string ConfirmPassword { get; set; }
     }
 }

@@ -1,34 +1,22 @@
-﻿@model PhotoAlbum.Models.PageData<PhotoAlbum.Business.DTO.PhotoOfAlbumDTO>
-
-@{
+﻿@{
     ViewBag.Title = "Фотографии";
 }
 
 <style>
-    img {
-        max-height: 100px;
-        max-width: 160px;
+   a > img{
+        max-height: 200px;
+        max-width: 260px;
+        min-height: 160px;
+        min-width: 100px;
         float: none;
         margin: 0 0 40px 0;
     }
 </style>
 
-<h2>@ViewBag.Tag</h2>
+<h2>Search by tag @TempData["TagName"]</h2>
+
+<hr />
 
 <div id="gallery">
-
-    @foreach (var item in Model.Content)
-    {
-        <a href="/Photo/ShowPhoto/@item.Id">
-            @Html.Raw("<img src=\"data:image/jpeg;base64,"
-                                + Convert.ToBase64String(item.Image) + "\" />")
-        </a>
-    }
-
-    <div>
-        @if (Model.CountPage > 1)
-        {
-            @Html.PageLinks(Model.NumberPage, Model.CountPage, x => Url.Action("ShowPhotoByTag", "Photo", new { tagName = ViewBag.Tag, page = x }))
-        }
-    </div>
+    @{Html.RenderAction("GetPhotosByTag", new { tagName = @TempData["TagName"] });}
 </div>

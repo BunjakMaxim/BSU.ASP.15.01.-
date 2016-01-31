@@ -67,6 +67,12 @@ namespace PhotoAlbum.Business.Services
                 .Map<IEnumerable<User>, IEnumerable<UserDTO>>(unitOfWork.Users.GetAll());
         }
 
+        public IEnumerable<string> GetAllUsersName()
+        {
+            return unitOfWork.Users.GetAll()
+                .Select(user => user.Login);
+        }
+
         public User GetUserByLogin(string login)
         {
             return unitOfWork.Users.GetByLogin(login);

@@ -43,7 +43,7 @@ namespace PhotoAlbum.Controllers
                         return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
+                    ModelState.AddModelError("", "The username or password is incorrect.");
             }
             return View(viewModel);
         }
@@ -68,7 +68,7 @@ namespace PhotoAlbum.Controllers
 
             if (anyUser)
             {
-                ModelState.AddModelError("", "Пользователь с таким именем уже зарегистрирован.");
+                ModelState.AddModelError("", "This user name is already registered.");
                 return View(viewModel);
             }
 
@@ -82,7 +82,7 @@ namespace PhotoAlbum.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Ошибка регистрации."); 
+                    ModelState.AddModelError("", "Registration error."); 
             }
 
             return View(viewModel);

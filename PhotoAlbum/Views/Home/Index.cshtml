@@ -1,37 +1,20 @@
 ﻿@model IEnumerable<string>
+    
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
-<style>
-    .badge {
-        display: inline-block;
-        min-width: 10px;
-        padding: 3px 7px;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 1;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        background-color: #E39821;
-        border-radius: 10px;
-    }
- </style>
 
-<h2>Интернет-фотоальбом. </h2>
-<ol>
-    <li>Регистрация</li>
-    <li>Загрузка фотографий</li>
-    <li>Возможность просматривать и оценивать фотографии других пользователей</li>
-    <li>Поиск фотографий</li> 
-    <li>Управление пользователями.</li>
-</ol>
-
-<br /><br />
-<div>
-    @foreach (var tagName in Model)
-    {
-        <a href="@Url.Action("ShowPhotoByTag", "Photo", new { tagName = @tagName })" class="badge">@tagName</a>
-    }
+<div id="gallery" class="page">
+    <div class="tags-bare">
+        <h2>Tags</h2>
+        <div style="line-height: 2.5;">
+            @foreach (var tagName in Model)
+            {
+                <a href=@Url.Action("ShowPhotoByTag", "Photo", new { tagName = tagName}) class="badge">@tagName</a>
+            }
+        </div>
+    </div>
+    <div class="users-bar">
+        @{Html.RenderAction("GetUsersName");}
+    </div>
 </div>

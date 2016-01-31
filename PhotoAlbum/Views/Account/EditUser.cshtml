@@ -1,18 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Настройка аккаунта";
+    ViewBag.Title = "Setting account";
 }
 
-<h2 style="text-align:center;">Настройка аккаунта</h2>
+<h2 style="text-align:center;">Setting up your account</h2>
 
 &nbsp;&nbsp;
 
-<h4>Изменить Ваш логин</h4>
+<h4>Change your login</h4>
 <fieldset>
     @using (Html.BeginForm("RenameUser", "Account", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
     {
-        <p>Введите новый логин: @Html.TextBox("newLogin", "")</p>
-        <p><input type="submit" value="Изменить" /></p>
+        <p>Enter a new login: @Html.TextBox("newLogin", "")</p>
+        <p><input type="submit" value="Change" /></p>
     }
 </fieldset>
 
@@ -20,13 +20,13 @@
 
 &nbsp;&nbsp;
 
-<h4>Изменить Ваш адрес электронной почты</h4>
+<h4>Change your email address</h4>
 <hr/>
-<fieldset title="Задать новый email">
+<fieldset title="Ask a new email">
     @using (Html.BeginForm("RenameAlbum", "Album", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
     {
-        <p>Введите новый email: @Html.TextBox("newAlbumName", "")</p>
-        <p><input type="submit" value="Изменить" /></p>
+        <p>Enter your new email: @Html.TextBox("newAlbumName", "")</p>
+        <p><input type="submit" value="Change" /></p>
     }
 </fieldset>
 
@@ -34,15 +34,15 @@
 
 &nbsp;&nbsp;
 
-<h4>Изменить пароль</h4>
+<h4>Change password</h4>
 <hr/>
 <fieldset>
     @using (Html.BeginForm("RenameAlbum", "Album", new { albumName = ViewBag.AlbumName }, FormMethod.Post))
     {
-        <p>Введите пароль:
+        <p>Enter password:
         @Html.TextBox("newAlbumName", "")</p>
-        <p>Введите новый пароль:
+        <p>Enter new password:
         @Html.TextBox("newAlbumName", "")</p>
-        <input type="submit" value="Изменить" />
+        <input type="submit" value="Change" />
     }
 </fieldset>

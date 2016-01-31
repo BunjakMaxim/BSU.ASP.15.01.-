@@ -1,0 +1,15 @@
+﻿@model PhotoAlbum.Models.RatingViewModel
+                        
+Rating: @Model.RatingString
+
+@if (!@Model.IsMY)
+{
+    using (Ajax.BeginForm("EditRating", "Photo", new { idPhoto = Model.IdPhoto }, new AjaxOptions { UpdateTargetId = ("Rating-"+ @Model.IdPhoto), LoadingElementId = "loading" }))
+    {
+        @Html.ButtonsRatingSelected(@Model.NewRating);
+    }
+
+    <div id="loading" style="display:none; text-align:center">
+        <img src="~/Content/loader_orange.gif" width="20px">
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@model PhotoAlbum.Models.PageData<string>
+
+<h2>All users</h2>
+<ul>
+    @foreach (var userName in Model.Content)
+            {
+        <li style="display:inline-block;">
+            <a href="@Url.Action("ShowAlbums", "Album", new { userName = @userName })" style="text-decoration:none;">
+                <figure class="fig">
+                    <img src="~/Content/5books.jpg" title="Открыть @userName" width="135px">
+                    <figcaption>
+                        @userName
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+    }
+</ul>
+
+<br/>
+
+<div>
+    @if (Model.CountPage > 1)
+    {
+        @Html.PageLinks(Model.NumberPage, Model.CountPage, x => Url.Action("GetUsersName", new { page = x }))
+    }
+</div>

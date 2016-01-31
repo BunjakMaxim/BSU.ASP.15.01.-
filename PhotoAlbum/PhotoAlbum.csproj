@@ -153,7 +153,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\5books.jpg" />
     <Content Include="Content\81c2eda06d21.jpg" />
+    <Content Include="Content\loader_orange.gif" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\livres-300x240.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -163,7 +167,9 @@
     <Content Include="scripts\jquery-2.2.0.min.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -190,6 +196,7 @@
     <Compile Include="Models\AlbumViewModel.cs" />
     <Compile Include="Models\LogOnViewModel.cs" />
     <Compile Include="Models\PageData.cs" />
+    <Compile Include="Models\RatingViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,6 +223,10 @@
     <Content Include="Views\Photo\EditPhoto.cshtml" />
     <Content Include="scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Photo\TagAdd.cshtml" />
+    <Content Include="Views\Photo\GetPhotosOfAlbum.cshtml" />
+    <Content Include="Views\Photo\GetPhotosByTag.cshtml" />
+    <Content Include="Views\Home\GetUsersName.cshtml" />
+    <Content Include="Views\Photo\EditRating.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -28,7 +28,9 @@ namespace PhotoAlbum.Util
         private void AddBindings()
         {
             kernel.Bind<IMembershipService>().To<MembershipService>();
-            kernel.Bind<IContentService>().To<ContentService>();
+            kernel.Bind<IAlbumService>().To<AlbumService>();
+            kernel.Bind<ITagService>().To<TagService>();
+            kernel.Bind<IPhotoService>().To<PhotoService>();
         }
     }
 }

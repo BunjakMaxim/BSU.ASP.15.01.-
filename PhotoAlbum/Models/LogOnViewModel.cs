@@ -4,16 +4,16 @@ namespace PhotoAlbum.Models
 {
     public class LogOnViewModel
     {
-        [Required(ErrorMessage = "Поле не может быть пустым!")]
-        [Display(Name = "Введите логин")]
+        [Required]
+        [Display(Name = "Enter login :")]
         public string Login { get; set; }
 
-        [Required(ErrorMessage = "Поле не может быть пустым!")]
+        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Введите пароль")]
+        [Display(Name = "Enter password :")]
         public string Password { get; set; }
 
-        [Display(Name = "Запомнить пароль?")]
+        [Display(Name = "Remember password?")]
         public bool RememberMe { get; set; }
     }
 }
