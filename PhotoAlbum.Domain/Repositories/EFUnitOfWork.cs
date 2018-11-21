@@ -103,6 +103,7 @@ namespace PhotoAlbum.Domain.Repositories
                     db.Dispose();
                 }
             }
+            
             this.disposed = true;
         }
 
